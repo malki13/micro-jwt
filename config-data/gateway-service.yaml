@@ -32,7 +32,7 @@ spring:
         - id: gestion-service
           uri: lb://gestion-service
           predicates:
-            - Path=/gestion/**
+            - Path=/telecom-cedia/api/gestion/**
         - id: administracion-service
           uri: lb://administracion-service
           predicates:
