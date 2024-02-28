@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          default-label: gateway
+          default-label: main
           uri: https://github.com/malki13/micro-jwt
           search-paths: config-data
   application:
