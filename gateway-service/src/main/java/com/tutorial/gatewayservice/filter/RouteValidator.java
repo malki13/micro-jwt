@@ -25,7 +25,8 @@ public class RouteValidator {
             "/swagger-ui/**",
             "/swagger-resources/configuration/ui",
             "/swagger-resources/configuration/security",
-            "/csrf"
+            "/csrf",
+            "/telecom-cedia/api/administracion/swagger-ui/**"
     );
 
     public Predicate<ServerHttpRequest> isSecured =
