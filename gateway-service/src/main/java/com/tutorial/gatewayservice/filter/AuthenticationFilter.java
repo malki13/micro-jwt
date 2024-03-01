@@ -5,8 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Mono;
 
 @Component
 public class AuthenticationFilter extends AbstractGatewayFilterFactory<AuthenticationFilter.Config> {
@@ -37,12 +41,19 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
 
                 }catch (Exception e){
                     System.out.println("token invalido");
-                    throw new RuntimeException("No autorizado");
+//                    throw new RuntimeException("No autorizado");
+                    return onError(exchange,HttpStatus.UNAUTHORIZED);
                 }
             }
 
             return chain.filter(exchange);
         });
+    }
+
+    public Mono<Void> onError(ServerWebExchange exchange, HttpStatus status) {
+        ServerHttpResponse response = exchange.getResponse();
+        response.setStatusCode(status);
+        return response.setComplete();
     }
 
     public static class Config{
