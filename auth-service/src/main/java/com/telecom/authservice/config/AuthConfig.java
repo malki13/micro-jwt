@@ -36,6 +36,7 @@ public class AuthConfig {
             "/swagger-ui.html",
             "/webjars/**",
             "/v3/api-docs/**",
+            "/v3/api-docs",
             "/swagger-ui.html",
             "/swagger-ui/**",
             "/swagger-resources/configuration/ui",
@@ -54,7 +55,9 @@ public class AuthConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        return http.csrf().disable()
+//        return http
+//                .csrf()
+//                .disable()
 //                .authorizeHttpRequests()
 //                .requestMatchers("/auth/register", "/auth/token", "/auth/validate").permitAll()
 //                .and()
