@@ -16,13 +16,14 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/interventor")
 @Tag(name = "Interventor",description = "REST API relacionada a la entidad de Interventor")
 public class InterventorController {
     @Autowired
     private InterventorService interventorService;
+//    @CrossOrigin
     @GetMapping("/saludo/{id}")
 //    @Operation(security = {@SecurityScheme()
     public ResponseEntity<String> getById(@PathVariable("id") int id) {
