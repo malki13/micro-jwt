@@ -43,10 +43,10 @@ spring:
           uri: lb://auth-service
           predicates:
             - Path=/auth/**
-        # - id: administracion-service-swagger
-        #   uri: lb://administracion-service
-        #   predicates:
-        #     - Path=/telecom-cedia/api/administracion/v3/api-docs
+        - id: administracion-service-swagger-ui
+          uri: lb://administracion-service
+          predicates:
+            - Path=/telecom-cedia/api/administracion/swagger-ui/index.html
 # springdoc:
 #   api-docs:
 #     enabled: true

@@ -29,6 +29,8 @@ public class RouteValidator {
             "/swagger-resources/configuration/security",
             "/csrf",
             "/telecom-cedia/api/administracion/swagger-ui/**",
+            "/telecom-cedia/api/administracion/v3/api-docs/**",
+            "/telecom-cedia/api/administracion/v3/api-docs",
             "/**/swagger-ui/**"
     );
 

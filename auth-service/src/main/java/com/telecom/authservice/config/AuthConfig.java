@@ -44,6 +44,8 @@ public class AuthConfig {
             "/csrf",
             "/",
             "/telecom-cedia/api/administracion/swagger-ui/**",
+            "/telecom-cedia/api/administracion/v3/api-docs/**",
+            "/telecom-cedia/api/administracion/v3/api-docs",
             "/**/swagger-ui/**"
             // other public endpoints of your API may be appended to this array
     };
