@@ -11,9 +11,10 @@ eureka:
     hostname: localhost
 
 spring:
+  main:
+    web-application-type: reactive
   cloud:
     gateway:
-      
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin, RETAIN_FIRST
         - AddResponseHeader=Access-Control-Allow-Origin, *
@@ -56,23 +57,17 @@ spring:
           predicates:
             - Path=/auth/**
 springdoc:
-  enable-native-support: true
   api-docs:
     enabled: true
   swagger-ui:
-    use-root-path: true
     enabled: true
     path: /swagger-ui.html
     config-url: /v3/api-docs/swagger-config
     urls:
-      # - url: /v3/api-docs
-      #   name: Gateway
-      - url: http://telecom-cedia/api/gestion/v3/api-docs
-        name: gestion-service
-        # - id: administracion-service-swagger-ui
-        #   uri: lb://administracion-service
-        #   predicates:
-        #     - Path=/telecom-cedia/api/administracion/swagger-ui/index.html
+      - url: /v3/api-docs
+        name: API Gateway Service
+      - url: /test-service/v3/api-docs
+        name: Test Service
 # springdoc:
 #   api-docs:
 #     enabled: true
