@@ -31,6 +31,7 @@ public class RouteValidator {
             "/telecom-cedia/api/administracion/swagger-ui/**",
             "/telecom-cedia/api/administracion/v3/api-docs/**",
             "/telecom-cedia/api/administracion/v3/api-docs",
+            "/telecom-cedia/api/administracion/swagger-ui/index.html/**",
             "/**/swagger-ui/**"
     );
 
