@@ -67,8 +67,8 @@ springdoc:
     urls:
       # - url: /v3/api-docs
       #   name: Gateway
-      - url: http://telecom-cedia/api/administracion/v3/api-docs
-        name: administracion-service
+      - url: http://telecom-cedia/api/gestion/v3/api-docs
+        name: gestion-service
         # - id: administracion-service-swagger-ui
         #   uri: lb://administracion-service
         #   predicates:
