@@ -56,6 +56,11 @@ spring:
           uri: lb://auth-service
           predicates:
             - Path=/auth/**
+        - id: test-service-route
+          uri: lb://gestion-service
+          predicates:
+            - Path=/test-service/v3/api-docs
+            - Method=GET
 springdoc:
   api-docs:
     enabled: true
