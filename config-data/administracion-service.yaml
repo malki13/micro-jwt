@@ -17,6 +17,6 @@ openapi:
     url: http://localhost:8080 #api gateway url
 springdoc:
   api-docs:
-    path: /telecom-cedia/api/administracion/v3/api-docs
+    path: /test-service/v3/api-docs
   swagger-ui:
-    path: /telecom-cedia/api/administracion/swagger-ui.html
+    path: /test-service/swagger-ui.html
