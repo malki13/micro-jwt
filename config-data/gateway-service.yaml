@@ -63,6 +63,11 @@ spring:
           predicates:
             - Path=/test-service/v3/api-docs
             - Method=GET
+        - id: administracion-service-route
+          uri: lb://administracion-service
+          predicates:
+            - Path=/telecom-cedia/api/administracion/test-service/v3/api-docs
+            - Method=GET
 springdoc:
   api-docs:
     enabled: true
@@ -75,6 +80,8 @@ springdoc:
         name: API Gateway Service
       - url: /test-service/v3/api-docs
         name: Test Service
+      - url: /telecom-cedia/api/administracion/test-service/v3/api-docs
+        name: Administracion Service
 # springdoc:
 #   api-docs:
 #     enabled: true
