@@ -27,12 +27,12 @@ public class RouteValidator {
             "/swagger-ui/**",
             "/swagger-resources/configuration/ui",
             "/swagger-resources/configuration/security",
-            "/csrf",
-            "/telecom-cedia/api/administracion/swagger-ui/**",
-            "/telecom-cedia/api/administracion/v3/api-docs/**",
-            "/telecom-cedia/api/administracion/v3/api-docs",
-            "/telecom-cedia/api/administracion/swagger-ui/index.html/**",
-            "/**/swagger-ui/**"
+            "/csrf"
+//            "/telecom-cedia/api/administracion/swagger-ui/**",
+//            "/telecom-cedia/api/administracion/v3/api-docs/**",
+//            "/telecom-cedia/api/administracion/v3/api-docs",
+//            "/telecom-cedia/api/administracion/swagger-ui/index.html/**",
+//            "/**/swagger-ui/**"
     );
 
     public Predicate<ServerHttpRequest> isSecured =

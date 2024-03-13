@@ -42,12 +42,12 @@ public class AuthConfig {
             "/swagger-resources/configuration/ui",
             "/swagger-resources/configuration/security",
             "/csrf",
-            "/",
-            "/telecom-cedia/api/administracion/swagger-ui/**",
-            "/telecom-cedia/api/administracion/v3/api-docs/**",
-            "/telecom-cedia/api/administracion/swagger-ui/index.html/**",
-            "/telecom-cedia/api/administracion/v3/api-docs",
-            "/**/swagger-ui/**"
+            "/"
+//            "/telecom-cedia/api/administracion/swagger-ui/**",
+//            "/telecom-cedia/api/administracion/v3/api-docs/**",
+//            "/telecom-cedia/api/administracion/swagger-ui/index.html/**",
+//            "/telecom-cedia/api/administracion/v3/api-docs",
+//            "/**/swagger-ui/**"
             // other public endpoints of your API may be appended to this array
     };
 
@@ -58,13 +58,6 @@ public class AuthConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        return http
-//                .csrf()
-//                .disable()
-//                .authorizeHttpRequests()
-//                .requestMatchers("/auth/register", "/auth/token", "/auth/validate").permitAll()
-//                .and()
-//                .build();
         return http
                 .csrf(csrf ->
                         csrf.disable())

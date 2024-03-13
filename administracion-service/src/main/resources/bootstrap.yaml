@@ -9,11 +9,15 @@ spring:
     config:
       enabled: true
       uri: http://localhost:8082
+#      uri: ${COFIG_SERVER}
   datasource:
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: postgres
     url: jdbc:postgresql://localhost:5434/db_administracion
+#    username: ${POSTGRES_USER}
+#    password: ${POSTGRES_PASSWORD}
+#    url: jdbc:postgresql://${DB_SERVER}/${POSTGRES_DB}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     database: POSTGRESQL
@@ -29,3 +33,10 @@ spring:
       enable-lazy-load-no-trans: true
     properties.hibernate:
       enable_lazy_load_no_trans: true
+#eureka:
+#  client:
+#    serviceUrl:
+#            defaultZone: http://localhost:8082/eureka/
+##      defaultZone: ${DEFAULT_ZONE}
+#  instance:
+#    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
