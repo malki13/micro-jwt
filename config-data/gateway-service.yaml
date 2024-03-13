@@ -6,9 +6,11 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      default-zone: http://localhost:8761/eureka
+      # default-zone: http://localhost:8761/eureka
+      default-zone: http://backendeureka/eureka
+      
   instance:
-    hostname: localhost
+    hostname: backendeureka
 
 spring:
   main:
@@ -30,18 +32,18 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: user-service
-          uri: lb://user-service
-          predicates:
-            - Path=/user/**
-        - id: car-service
-          uri: lb://car-service
-          predicates:
-            - Path=/car/**
-        - id: bike-service
-          uri: lb://bike-service
-          predicates:
-            - Path=/bike/**
+        # - id: user-service
+        #   uri: lb://user-service
+        #   predicates:
+        #     - Path=/user/**
+        # - id: car-service
+        #   uri: lb://car-service
+        #   predicates:
+        #     - Path=/car/**
+        # - id: bike-service
+        #   uri: lb://bike-service
+        #   predicates:
+        #     - Path=/bike/**
         - id: gestion-service
           uri: lb://gestion-service
           predicates:
