@@ -11,6 +11,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsUtils;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+import org.springframework.web.reactive.config.CorsRegistry;
+import org.springframework.web.reactive.config.EnableWebFlux;
+import org.springframework.web.reactive.config.WebFluxConfigurer;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
@@ -20,11 +23,21 @@ import java.util.Arrays;
 import java.util.Collections;
 
 @Configuration
-public class CORSConfiguration extends CorsConfiguration {
+//@EnableWebFlux
+public class CORSConfiguration /*implements WebFluxConfigurer*/ {
     private static final String ALLOWED_HEADERS = "x-requested-with, authorization, Content-Type, Content-Length, Authorization, credential, X-XSRF-TOKEN";
     private static final String ALLOWED_METHODS = "GET, PUT, POST, DELETE, OPTIONS, PATCH";
     private static final String ALLOWED_ORIGIN = "*";
     private static final String MAX_AGE = "7200"; //2 hours (2 * 60 * 60)
+//    @Override
+//    public void addCorsMappings(CorsRegistry corsRegistry) {
+//        corsRegistry.addMapping("/**")
+//                .allowedOriginPatterns("*")
+//                .allowedMethods("*")
+//                .allowedHeaders("*")
+//                .maxAge(3600);
+//    }
+
 
 //    @Bean
 //    public WebFilter corsFilter() {
@@ -45,18 +58,18 @@ public class CORSConfiguration extends CorsConfiguration {
 //            return chain.filter(ctx);
 //        };
 //    }
-//        @Bean
-//        public CorsWebFilter corsWebFilter() {
-//
-//            final CorsConfiguration corsConfig = new CorsConfiguration();
-//            corsConfig.setAllowedOriginPatterns(Collections.singletonList(("*")));
-//            corsConfig.setMaxAge(3600L);
-//            corsConfig.setAllowedMethods(Arrays.asList("GET", "POST"));
-//            corsConfig.addAllowedHeader("*");
-//
-//            final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//            source.registerCorsConfiguration("/**", corsConfig);
-//
-//            return new CorsWebFilter(source);
-//        }
+        @Bean
+        public CorsWebFilter corsWebFilter() {
+
+            final CorsConfiguration corsConfig = new CorsConfiguration();
+            corsConfig.setAllowedOriginPatterns(Collections.singletonList(("*")));
+            corsConfig.setMaxAge(8000L);
+            corsConfig.setAllowedMethods(Arrays.asList("GET", "POST"));
+            corsConfig.addAllowedHeader("*");
+
+            final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+            source.registerCorsConfiguration("/**", corsConfig);
+
+            return new CorsWebFilter(source);
+        }
 }

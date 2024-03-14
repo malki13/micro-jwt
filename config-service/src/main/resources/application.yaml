@@ -6,8 +6,8 @@ spring:
       server:
         git:
           default-label: main
-          uri: https://github.com/malki13/micro-jwt
-#          uri: https://github.com/malki13/datos-configuracion
+#          uri: https://github.com/malki13/micro-jwt
+          uri: https://github.com/malki13/datos-configuracion
           search-paths: config-data
   application:
     name: config-service
