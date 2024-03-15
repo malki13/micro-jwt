@@ -10,7 +10,7 @@ import com.telecom.gestionservice.gateway.data.read.GatewayRead;
 import com.telecom.gestionservice.gateway.mapper.GatewayMapper;
 import com.telecom.gestionservice.gateway.repository.GatewayCrudRepository;
 //import org.apache.coyote.BadRequestException;
-import com.telecom.gestionservice.response.error.BadRequestException;
+import com.telecom.gestionservice.util.response.error.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

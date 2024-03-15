@@ -1,6 +1,6 @@
 package com.telecom.gestionservice.feing;
 
-import com.telecom.gestionservice.response.Response;
+import com.telecom.gestionservice.util.response.Response;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

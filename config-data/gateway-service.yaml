@@ -16,11 +16,11 @@ spring:
     web-application-type: reactive
   cloud:
     gateway:
-      # default-filters:
-      #   - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin, RETAIN_FIRST
-      #   - AddResponseHeader=Access-Control-Allow-Origin, *
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin, RETAIN_FIRST
+        - AddResponseHeader=Access-Control-Allow-Origin, *
       globalcors:
-      #     add-to-simple-url-handler-mapping: true
+          add-to-simple-url-handler-mapping: true
           corsConfigurations:
             '[/**]':
               allowedOriginPatterns: "*"

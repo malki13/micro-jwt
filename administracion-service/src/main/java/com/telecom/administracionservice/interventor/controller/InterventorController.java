@@ -5,6 +5,7 @@ import com.telecom.administracionservice.interventor.data.info.InterventorInfo;
 import com.telecom.administracionservice.interventor.service.InterventorService;
 import com.telecom.administracionservice.util.response.Response;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
@@ -27,11 +28,16 @@ public class InterventorController {
     @GetMapping("/saludo/{id}")
     @Operation(summary = "Saludo")
     @SecurityRequirement(name = "bearerAuth")
-    public ResponseEntity<String> getById(@PathVariable("id") int id) {
+    public ResponseEntity<String> getById(
+            @Parameter(hidden = true) @RequestHeader(name = "Authorization") String authorization,
+            @PathVariable("id") int id) {
         return ResponseEntity.ok("Hola"+String.valueOf(id));
     }
     @GetMapping("/")
+    @Operation(summary = "Listar Interventores")
+    @SecurityRequirement(name = "bearerAuth")
     public ResponseEntity<Page<InterventorInfo>> findAll(
+            @Parameter(hidden = true) @RequestHeader(name = "Authorization") String authorization,
             @PageableDefault(size = 10, page = 0) Pageable pageable
     ) {
         return new ResponseEntity<>(interventorService.findAll(pageable), HttpStatus.OK);

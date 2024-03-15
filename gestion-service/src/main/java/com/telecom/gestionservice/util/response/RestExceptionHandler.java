@@ -1,6 +1,6 @@
-package com.telecom.gestionservice.response;
+package com.telecom.gestionservice.util.response;
 
-import com.telecom.gestionservice.response.error.*;
+import com.telecom.gestionservice.util.response.error.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DuplicateKeyException;

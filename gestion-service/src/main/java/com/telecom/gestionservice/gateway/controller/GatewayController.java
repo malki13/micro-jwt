@@ -3,7 +3,10 @@ package com.telecom.gestionservice.gateway.controller;
 import com.telecom.gestionservice.gateway.data.dto.GatewayDTO;
 import com.telecom.gestionservice.gateway.data.info.GatewayInfo;
 import com.telecom.gestionservice.gateway.service.GatewayService;
-import com.telecom.gestionservice.response.Response;
+import com.telecom.gestionservice.util.response.Response;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,7 +22,11 @@ public class GatewayController {
     @Autowired
     private GatewayService gatewayService;
     @GetMapping("/{id}")
-    public ResponseEntity<String> getById(@PathVariable("id") int id) {
+    @Operation(summary = "Saludo")
+    @SecurityRequirement(name = "bearerAuth")
+    public ResponseEntity<String> getById(
+            @Parameter(hidden = true) @RequestHeader(name = "Authorization") String authorization,
+            @PathVariable("id") int id) {
 //        Bike bike = bikeService.getBikeById(id);
 //        if(bike == null)
 //            return ResponseEntity.notFound().build();

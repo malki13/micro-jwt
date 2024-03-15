@@ -1,4 +1,4 @@
-package com.telecom.gestionservice.response;
+package com.telecom.gestionservice.util.response;
 
 import lombok.Builder;
 import lombok.Data;

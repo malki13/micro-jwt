@@ -1,4 +1,4 @@
-package com.telecom.gestionservice.response.error;
+package com.telecom.gestionservice.util.response.error;
 
 public class ForbiddenException extends RuntimeException{
 
