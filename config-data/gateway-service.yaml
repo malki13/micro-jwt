@@ -46,7 +46,7 @@ spring:
         - id: gestion-service
           uri: lb://gestion-service
           predicates:
-            - Path=/telecom-cedia/api/gestion/**
+            - Path=/gestion/**
           filters:
             - AuthenticationFilter
         - id: administracion-service
