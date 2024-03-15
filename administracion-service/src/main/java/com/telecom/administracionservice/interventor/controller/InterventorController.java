@@ -25,7 +25,8 @@ public class InterventorController {
     private InterventorService interventorService;
 //    @CrossOrigin(originPatterns = "*")
     @GetMapping("/saludo/{id}")
-//    @Operation(security = {@SecurityScheme()
+    @Operation(summary = "Saludo")
+    @SecurityRequirement(name = "bearerAuth")
     public ResponseEntity<String> getById(@PathVariable("id") int id) {
         return ResponseEntity.ok("Hola"+String.valueOf(id));
     }
