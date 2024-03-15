@@ -39,37 +39,39 @@ public class CORSConfiguration /*implements WebFluxConfigurer*/ {
 //    }
 
 
-//    @Bean
-//    public WebFilter corsFilter() {
-//        return (ServerWebExchange ctx, WebFilterChain chain) -> {
-//            ServerHttpRequest request = ctx.getRequest();
-//            if (CorsUtils.isCorsRequest(request)) {
-//                ServerHttpResponse response = ctx.getResponse();
-//                HttpHeaders headers = response.getHeaders();
-//                headers.add("Access-Control-Allow-Origin", ALLOWED_ORIGIN);
-//                headers.add("Access-Control-Allow-Methods", ALLOWED_METHODS);
-//                headers.add("Access-Control-Max-Age", MAX_AGE); //OPTION how long the results of a preflight request (that is the information contained in the Access-Control-Allow-Methods and Access-Control-Allow-Headers headers) can be cached.
-//                headers.add("Access-Control-Allow-Headers", ALLOWED_HEADERS);
-//                if (request.getMethod() == HttpMethod.OPTIONS) {
-//                    response.setStatusCode(HttpStatus.OK);
-//                    return Mono.empty();
-//                }
-//            }
-//            return chain.filter(ctx);
-//        };
-//    }
-        @Bean
-        public CorsWebFilter corsWebFilter() {
+    @Bean
+    public WebFilter corsFilter() {
+        return (ServerWebExchange ctx, WebFilterChain chain) -> {
+            ServerHttpRequest request = ctx.getRequest();
+            if (CorsUtils.isCorsRequest(request)) {
+                ServerHttpResponse response = ctx.getResponse();
+                HttpHeaders headers = response.getHeaders();
+                headers.add("Access-Control-Allow-Origin", ALLOWED_ORIGIN);
+                headers.add("Access-Control-Allow-Methods", ALLOWED_METHODS);
+                headers.add("Access-Control-Max-Age", MAX_AGE); //OPTION how long the results of a preflight request (that is the information contained in the Access-Control-Allow-Methods and Access-Control-Allow-Headers headers) can be cached.
+                headers.add("Access-Control-Allow-Headers", ALLOWED_HEADERS);
+                if (request.getMethod() == HttpMethod.OPTIONS) {
+                    response.setStatusCode(HttpStatus.OK);
+                    return Mono.empty();
+                }
+            }
+            return chain.filter(ctx);
+        };
+    }
 
-            final CorsConfiguration corsConfig = new CorsConfiguration();
-            corsConfig.setAllowedOriginPatterns(Collections.singletonList(("*")));
-            corsConfig.setMaxAge(8000L);
-            corsConfig.setAllowedMethods(Arrays.asList("GET", "POST"));
-            corsConfig.addAllowedHeader("*");
+    @Bean
+    public CorsWebFilter corsWebFilter() {
 
-            final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-            source.registerCorsConfiguration("/**", corsConfig);
+        final CorsConfiguration corsConfig = new CorsConfiguration();
+        corsConfig.setAllowedOriginPatterns(Collections.singletonList(("*")));
+        corsConfig.setMaxAge(8000L);
+        corsConfig.setAllowedMethods(Arrays.asList("GET", "POST"));
+        corsConfig.addAllowedHeader("*");
 
-            return new CorsWebFilter(source);
-        }
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", corsConfig);
+
+        return new CorsWebFilter(source);
+    }
+
 }
