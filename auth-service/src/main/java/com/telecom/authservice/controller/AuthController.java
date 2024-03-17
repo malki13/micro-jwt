@@ -1,6 +1,7 @@
 package com.telecom.authservice.controller;
 
 import com.telecom.authservice.data.dto.AuthRequest;
+import com.telecom.authservice.data.dto.AuthResponse;
 import com.telecom.authservice.data.entity.UserCredential;
 import com.telecom.authservice.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,13 @@ public class AuthController {
     }
 
     @PostMapping("/token")
-    public String getToken(@RequestBody AuthRequest authRequest){
+    public AuthResponse getToken(@RequestBody AuthRequest authRequest){
         Authentication authentication =  authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(),authRequest.getPassword()));
         if(authentication.isAuthenticated()){
-            return service.generateToken(authRequest.getUsername());
+            AuthResponse authResponse = new AuthResponse();
+            authResponse.setJwt(service.generateToken(authRequest.getUsername()));
+//            return service.generateToken(authRequest.getUsername());
+            return authResponse;
         }
         throw new RuntimeException("No se puede validar el usuario, revise credenciales");
 

@@ -6,11 +6,28 @@ spring:
       enabled: true
       uri: http://localhost:8082
 #      uri: ${COFIG_SERVER}
+    main:
+      web-application-type: reactive
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin, RETAIN_FIRST
+        - AddResponseHeader=Access-Control-Allow-Origin, *
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        corsConfigurations:
+          '[/**]':
+            allowedOriginPatterns: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+            allowedMethods: "*"
 #eureka:
 #  client:
-#    serviceUrl:
-##      defaultZone: http://localhost:8082/eureka/
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url:
 #      defaultZone: ${DEFAULT_ZONE}
+#  instance:
+#    hostname: localhost
 logging:
   level:
     org.springframework.cloud.gateway: debug
